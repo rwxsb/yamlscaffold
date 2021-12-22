@@ -1,12 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Diagnostics;
-using System.Linq;
-using YamlDotNet.RepresentationModel;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-using yamlscaffold.CLI;
-
+using YamlScaffold.CLI;
+using YamlScaffold.Cli.FileSystem;
 
 
 var scaffoldConfig = args.AsQueryable().FirstOrDefault();
@@ -23,7 +21,9 @@ try
     .WithNamingConvention(HyphenatedNamingConvention.Instance)
     .Build();
 
-    var scaffoldObject = deserializer.Deserialize<Dictionary<dynamic,dynamic>>(File.ReadAllText(scaffoldConfig));
+    var yamlContent = await FileSystemManager.ReadAllTextAsync(scaffoldConfig);
+
+    var scaffoldObject = deserializer.Deserialize<Dictionary<dynamic,dynamic>>(yamlContent);
 
     var builtCommand = BuildCommandString(scaffoldObject);
 
