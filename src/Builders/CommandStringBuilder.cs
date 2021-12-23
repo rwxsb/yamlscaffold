@@ -70,7 +70,7 @@ namespace YamlScaffold.Cli.Builders
                 {
                     if (!_options.TryGetValue(argumentName, out var value) || value is not IEnumerable<object> values)
                     {
-                        continue;
+                        throw new Exception($"The values of {argumentName} can not be empty!");
                     }
 
                     var stringValues = string.Join(',', values);
