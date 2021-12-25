@@ -9,11 +9,6 @@ using YamlScaffold.Cli.FileSystem;
 
 var scaffoldConfig = args.AsQueryable().FirstOrDefault();
 
-if (scaffoldConfig == null)
-{
-    Console.WriteLine("No such file found in the working directory.");
-    scaffoldConfig = Console.ReadLine()!.Trim();
-}
 
 try
 {
