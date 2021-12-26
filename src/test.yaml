@@ -1,7 +1,8 @@
 ﻿connection-string: '"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook"'
 dependencies: Microsoft.EntityFrameworkCore.SqlServer
-output-dir:  
-context: 
+output-dir: .\Entities
+context: TestDbContext
 table:
-- bsk.BasketValidationType
+- dbo.CustomerInfo
+- dbo.CustomerType
 force: True

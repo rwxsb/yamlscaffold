@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "yamlscaffold.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "test.yaml"
+    }
+  }
+}
