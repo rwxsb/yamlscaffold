@@ -11,21 +11,21 @@ namespace YamlScaffold.Cli.Builders
         private static readonly IReadOnlyCollection<ArgumentDetail> FlagArguments = new ArgumentDetail[] { new("force", "-f") };
         private static readonly IReadOnlyCollection<ArgumentDetail> MultipleValueArguments = new ArgumentDetail[] { new("table", "--table") };
 
-        private readonly Dictionary<dynamic, dynamic> _options;
+        private readonly IDictionary<dynamic, dynamic> _options;
 
-        private CommandStringBuilder(Dictionary<dynamic, dynamic> options)
+        private CommandStringBuilder(IDictionary<dynamic, dynamic> options)
         {
             _options = options;
         }
 
-        internal static CommandStringBuilder Init(Dictionary<dynamic, dynamic> options) => new(options);
+        internal static CommandStringBuilder Init(IDictionary<dynamic, dynamic> options) => new(options);
 
         private class Builder
         {
-            private readonly Dictionary<dynamic, dynamic> _options;
+            private readonly IDictionary<dynamic, dynamic> _options;
             private readonly StringBuilder _commandStringBuilder;
 
-            internal Builder(Dictionary<dynamic, dynamic> options)
+            internal Builder(IDictionary<dynamic, dynamic> options)
             {
                 _options = options ?? throw new ArgumentNullException(nameof(options), "Yaml items could not be parsed!");
                 _commandStringBuilder = new StringBuilder(CommandStringPrefix);
